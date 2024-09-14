@@ -1,0 +1,28 @@
+denoiser:
+  arch: dit
+  input_dim: 315
+  num_layers: 24
+diffusion:
+  predict_xstart: true
+# Dataset configs
+data:
+  datasets:
+    -
+      dataset: beat2
+      args:
+        data_dir: /apdcephfs/private_konantang/BEAT2_processed
+        num_frames: 196
+        include_pos: false
+  # augmentation:
+  #   -
+  #     type: random_rotation
+  batch_size: 64
+# Loss function configs
+losses:
+  -
+    loss_fn: flat_mse
+    scale: 1.0
+# Training configs
+training:
+  save_dir: /apdcephfs/private_konantang/dit-base
+  mixed_precision: fp16
